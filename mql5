@@ -1,0 +1,116 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                          Chart Customizer.mq5   |
+//|                      Developed by Forex Robot Easy Team          |
+//|                                    www.forexroboteasy.com        |
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//|                        Chart Customizer                           |
+//|   A trading software designed to enhance forex trading experience |
+//|               by providing advanced chart customization options   |
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//|                        Global Variables                           |
+//+------------------------------------------------------------------+
+input ENUM_CHART_TYPE ChartType = CHART_LINE;   // Default chart type is line chart
+input color ForegroundColor = clrRed;           // Default foreground color is red
+
+//+------------------------------------------------------------------+
+//|                   Expert Advisor Initialization                   |
+//+------------------------------------------------------------------+
+void OnInit()
+{
+    // Apply chart settings to all opened charts
+    ChartApplySettings();
+}
+
+//+------------------------------------------------------------------+
+//|                 Expert Advisor Deinitialization                   |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Remove chart customization
+    ChartRemoveCustomization();
+}
+
+//+------------------------------------------------------------------+
+//|                  Expert Advisor Custom Functions                  |
+//+------------------------------------------------------------------+
+
+// Function to apply chart settings to all opened charts
+void ChartApplySettings()
+{
+    int totalCharts = ChartGetInteger(0, CHART_TOTAL);
+    
+    for (int i = 0; i < totalCharts; i++)
+    {
+        // Apply chart type
+        ChartSetInteger(i, CHART_PROPERTY_TYPE, ChartType);
+        
+        // Apply foreground color
+        ChartSetInteger(i, CHART_FOREGROUND, ForegroundColor);
+        
+        // Apply chart shift
+        ChartSetInteger(i, CHART_SHIFT, 100);
+    }
+}
+
+// Function to remove chart customization
+void ChartRemoveCustomization()
+{
+    int totalCharts = ChartGetInteger(0, CHART_TOTAL);
+    
+    for (int i = 0; i < totalCharts; i++)
+    {
+        // Reset chart type to default
+        ChartSetInteger(i, CHART_PROPERTY_TYPE, CHART_LINE);
+        
+        // Reset foreground color to default
+        ChartSetInteger(i, CHART_FOREGROUND, clrBlack);
+        
+        // Reset chart shift to default
+        ChartSetInteger(i, CHART_SHIFT, 0);
+    }
+}
+
+//+------------------------------------------------------------------+
+//|                          Trading Functions                        |
+//+------------------------------------------------------------------+
+
+// Function for market analysis
+void MarketAnalysis()
+{
+    // Add code for market analysis here
+}
+
+// Function for trend identification
+void IdentifyTrend()
+{
+    // Add code for trend identification here
+}
+
+// Function for entry signals
+void EntrySignals()
+{
+    // Add code for entry signals here
+}
+
+// Function for exit signals
+void ExitSignals()
+{
+    // Add code for exit signals here
+}
+
+// Function for risk management
+void RiskManagement()
+{
+    // Add code for risk management here
+}
+
+// Function for position sizing
+void PositionSizing()
+{
+    // Add code for position sizing here
+}
